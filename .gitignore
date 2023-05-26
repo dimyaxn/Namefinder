@@ -1,1 +1,8 @@
-/venv
+/venv/
+/design/
+*.ui
+*.qrc
+*.css
+*.txt
+*.doc
+*.docx
