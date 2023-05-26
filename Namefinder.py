@@ -1,7 +1,7 @@
 import re
 
-file = open('file.txt', encoding="utf8")
-text = file.read()
+# file = open('file.txt', encoding="utf8")
+# text = file.read()
 
 def name_finder(text):
     result = set()
@@ -16,6 +16,13 @@ def name_finder(text):
     result.update(re.findall(pattern_4, text))
     return sorted(result)
 
-num_set = name_finder(text)
+def file_name_finder(text):
+    pattern = r'(?<=\/)[\w ]+(?:(?=\.doc)|(?=\.docx)|(?:\.txt))'
+    result = re.findall(pattern, text)
+    return result[0]
 
-print(*num_set, sep='\n')
+print(file_name_finder('C:/Users/stari/PycharmProjects/Namefinder/file.txt'))
+
+# num_set = name_finder(text)
+#
+# print(*num_set, sep='\n')
