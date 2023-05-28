@@ -1,7 +1,5 @@
 import re
-
-# file = open('file.txt', encoding="utf8")
-# text = file.read()
+import docx
 
 def name_finder(text):
     result = set()
@@ -21,8 +19,15 @@ def file_name_finder(text):
     result = re.findall(pattern, text)
     return result[0]
 
-print(file_name_finder('C:/Users/stari/PycharmProjects/Namefinder/file.txt'))
+def get_text(filename):
+    if filename.lower().endswith(('.docx')):
+        fullText = []
+        doc = docx.Document(filename)
+        for para in doc.paragraphs:
+            fullText.append(para.text)
+            result = '\n'.join(fullText)
+    elif filename.lower().endswith(('.txt')):
+        file = open(filename, encoding="utf8")
+        result = file.read()
+    return result
 
-# num_set = name_finder(text)
-#
-# print(*num_set, sep='\n')
